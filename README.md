@@ -1,3 +1,4 @@
+[![Lint](https://github.com/Pavel-Durov/dotfiles/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/Pavel-Durov/dotfiles/actions/workflows/lint.yml)
 # kimchi dotfiles
 Collection of my dotfiles
 ## Installation
