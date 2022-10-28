@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # kimchi dotfiles
 # go
 export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
@@ -25,24 +26,6 @@ export PATH=${PATH}:/usr/local
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="${PATH}:${HOME}/.poetry/bin"
 export PATH="${PATH}:${HOME}/tools/swift-5.5-RELEASE-ubuntu20.04/usr/bin/"
-
-# ruby
-source '/opt/homebrew/Cellar/rbenv/1.2.0/libexec/../completions/rbenv.zsh'
-command rbenv rehash 2>/dev/null
-rbenv() {
-  local command
-  command="${1:-}"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
-
-  case "$command" in
-  rehash|shell)
-    eval "$(rbenv "sh-$command" "$@")";;
-  *)
-    command rbenv "$command" "$@";;
-  esac
-}
 
 # haskell
 [ -f "/${HOME}/.ghcup/env" ] && source "/${HOME}/.ghcup/env" # ghcup-env
