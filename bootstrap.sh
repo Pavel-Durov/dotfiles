@@ -1,31 +1,37 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "${BASH_SOURCE}")";
-
-git pull origin main;
-
 TARGET="${HOME}/.dotfiles"
-function _init() {
+
+function init-config(){
   rm -fr ${TARGET}
   mkdir ${TARGET}
-  cp -r ./system ${TARGET}
-  cp -r ./config ${TARGET}
-  rm ${HOME}/.bash_profile
-  rm ${HOME}/.gitconfig
-  rm ${HOME}/.vimrc
-  ln -sv "${TARGET}/config/.bash_profile" ~
-  ln -sv "${TARGET}/config/.gitconfig" ~
-  ln -sv "${TARGET}/config/.vimrc" ~
+  rsync --exclude ".git/" \
+		--exclude ".DS_Store" \
+		--exclude "bootstrap.sh" \
+		--exclude "README.md" \
+		--exclude "LICENSE" \
+		-avh --no-perms . ${HOME}/.dotfiles;
 	source ${HOME}/.bash_profile;
 }
 
+function mac-install(){
+  source ${PWD}/system/.functions
+  ${PWD}/bin/is-macos && ${PWD}/bin/is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
+  ${PWD}/bin/is-macos && brew bundle --file=${PWD}/install/Caskfile || true
+}
+
+function init() {
+  init-config
+  # mac-install
+}
+
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
-	_init;
+	init;
 else
 	read -p "This action will overwrite existing files in your ${HOME} directory. Are you sure? (y/n) " -n 1;
 	echo "";
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		_init;
+		init;
 	fi;
 fi;
-unset _init;
+unset init;

@@ -1,0 +1,13 @@
+tap "homebrew/cask"
+tap "homebrew/cask-drivers"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+
+cask "docker"
+cask "firefox"
+cask "brave-browser"
+cask "insomnia"
+cask "alfred"
+cask "slack"
+cask "visual-studio-code"
+cask "vlc"

@@ -1,12 +1,12 @@
 # kimchi dotfiles
-# Go
+# go
 export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
 
-# Nvm
+# nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-################################# PATH #################################
+# path
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${HOME}/tools"
@@ -25,7 +25,8 @@ export PATH=${PATH}:/usr/local
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="${PATH}:${HOME}/.poetry/bin"
 export PATH="${PATH}:${HOME}/tools/swift-5.5-RELEASE-ubuntu20.04/usr/bin/"
-# Ruby
+
+# ruby
 source '/opt/homebrew/Cellar/rbenv/1.2.0/libexec/../completions/rbenv.zsh'
 command rbenv rehash 2>/dev/null
 rbenv() {
@@ -43,10 +44,10 @@ rbenv() {
   esac
 }
 
-# Haskell
+# haskell
 [ -f "/${HOME}/.ghcup/env" ] && source "/${HOME}/.ghcup/env" # ghcup-env
 
-# Conda
+# conda
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$(${HOME}/opt/anaconda3/bin/conda 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then

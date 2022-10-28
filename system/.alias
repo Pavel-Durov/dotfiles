@@ -51,4 +51,4 @@ alias path='echo -e ${PATH//:/\\n}'
 alias hosts="sudo $EDITOR /etc/hosts"
 alias quit="exit"
 alias week="date +%V"
-alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
+alias speedtest="speedtest-cli"
