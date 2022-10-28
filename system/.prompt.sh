@@ -11,44 +11,42 @@ _bash_prompt_config() {
 
   if tput setaf >/dev/null 2>&1 ; then
     _setaf () { tput setaf "$1" ; }
-    local RESET="${ESC_OPEN}$( { tput sgr0 || tput me ; } 2>/dev/null )${ESC_CLOSE}"
-    local BOLD="$( { tput bold || tput md ; } 2>/dev/null )"
+    RESET="${ESC_OPEN}$( { tput sgr0 || tput me ; } 2>/dev/null )${ESC_CLOSE}"
   else
     # Fallback
     _setaf () { echo "\033[0;$(($1+30))m" ; }
-    local RESET="\033[m"
-    local BOLD=""
+    RESET="\033[m"
     ESC_OPEN=""
     ESC_CLOSE=""
   fi
 
   # Normal colors
-  local BLACK="${ESC_OPEN}$(_setaf 0)${ESC_CLOSE}"
-  local RED="${ESC_OPEN}$(_setaf 1)${ESC_CLOSE}"
-  local GREEN="${ESC_OPEN}$(_setaf 2)${ESC_CLOSE}"
-  local YELLOW="${ESC_OPEN}$(_setaf 3)${ESC_CLOSE}"
-  local BLUE="${ESC_OPEN}$(_setaf 4)${ESC_CLOSE}"
-  local VIOLET="${ESC_OPEN}$(_setaf 5)${ESC_CLOSE}"
-  local CYAN="${ESC_OPEN}$(_setaf 6)${ESC_CLOSE}"
-  local WHITE="${ESC_OPEN}$(_setaf 7)${ESC_CLOSE}"
+  # local BLACK="${ESC_OPEN}$(_setaf 0)${ESC_CLOSE}"
+  RED="${ESC_OPEN}$(_setaf 1)${ESC_CLOSE}"
+  # local GREEN="${ESC_OPEN}$(_setaf 2)${ESC_CLOSE}"
+  YELLOW="${ESC_OPEN}$(_setaf 3)${ESC_CLOSE}"
+  # local BLUE="${ESC_OPEN}$(_setaf 4)${ESC_CLOSE}"
+  # local VIOLET="${ESC_OPEN}$(_setaf 5)${ESC_CLOSE}"
+  CYAN="${ESC_OPEN}$(_setaf 6)${ESC_CLOSE}"
+  WHITE="${ESC_OPEN}$(_setaf 7)${ESC_CLOSE}"
 
   # Bright colors
-  local BRIGHT_GREEN="${ESC_OPEN}$(_setaf 10)${ESC_CLOSE}"
-  local BRIGHT_YELLOW="${ESC_OPEN}$(_setaf 11)${ESC_CLOSE}"
-  local BRIGHT_BLUE="${ESC_OPEN}$(_setaf 12)${ESC_CLOSE}"
-  local BRIGHT_VIOLET="${ESC_OPEN}$(_setaf 13)${ESC_CLOSE}"
-  local BRIGHT_CYAN="${ESC_OPEN}$(_setaf 14)${ESC_CLOSE}"
-  local BRIGHT_WHITE="${ESC_OPEN}$(_setaf 15)${ESC_CLOSE}"
+  BRIGHT_GREEN="${ESC_OPEN}$(_setaf 10)${ESC_CLOSE}"
+  # local BRIGHT_YELLOW="${ESC_OPEN}$(_setaf 11)${ESC_CLOSE}"
+  # local BRIGHT_BLUE="${ESC_OPEN}$(_setaf 12)${ESC_CLOSE}"
+  # local BRIGHT_VIOLET="${ESC_OPEN}$(_setaf 13)${ESC_CLOSE}"
+  # local BRIGHT_CYAN="${ESC_OPEN}$(_setaf 14)${ESC_CLOSE}"
+  # local BRIGHT_WHITE="${ESC_OPEN}$(_setaf 15)${ESC_CLOSE}"
 
   # Bold colors
-  local BLACK_BOLD="${ESC_OPEN}${BOLD}$(_setaf 0)${ESC_CLOSE}"
-  local RED_BOLD="${ESC_OPEN}${BOLD}$(_setaf 1)${ESC_CLOSE}"
-  local GREEN_BOLD="${ESC_OPEN}${BOLD}$(_setaf 2)${ESC_CLOSE}"
-  local YELLOW_BOLD="${ESC_OPEN}${BOLD}$(_setaf 3)${ESC_CLOSE}"
-  local BLUE_BOLD="${ESC_OPEN}${BOLD}$(_setaf 4)${ESC_CLOSE}"
-  local VIOLET_BOLD="${ESC_OPEN}${BOLD}$(_setaf 5)${ESC_CLOSE}"
-  local CYAN_BOLD="${ESC_OPEN}${BOLD}$(_setaf 6)${ESC_CLOSE}"
-  local WHITE_BOLD="${ESC_OPEN}${BOLD}$(_setaf 7)${ESC_CLOSE}"
+  # local BLACK_BOLD="${ESC_OPEN}${BOLD}$(_setaf 0)${ESC_CLOSE}"
+  # local RED_BOLD="${ESC_OPEN}${BOLD}$(_setaf 1)${ESC_CLOSE}"
+  # local GREEN_BOLD="${ESC_OPEN}${BOLD}$(_setaf 2)${ESC_CLOSE}"
+  # local YELLOW_BOLD="${ESC_OPEN}${BOLD}$(_setaf 3)${ESC_CLOSE}"
+  # local BLUE_BOLD="${ESC_OPEN}${BOLD}$(_setaf 4)${ESC_CLOSE}"
+  # local VIOLET_BOLD="${ESC_OPEN}${BOLD}$(_setaf 5)${ESC_CLOSE}"
+  # local CYAN_BOLD="${ESC_OPEN}${BOLD}$(_setaf 6)${ESC_CLOSE}"
+  # local WHITE_BOLD="${ESC_OPEN}${BOLD}$(_setaf 7)${ESC_CLOSE}"
 
   # Expose the variables we need in prompt command
   P_USER=${BRIGHT_GREEN}${USER_SYMBOL}
@@ -96,7 +94,7 @@ bash_prompt_command() {
 }
 
 parse_git_branch() {
-  local OUT=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+  OUT=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
   if [ "$OUT" != "" ]; then echo " $OUT"; fi
 }
 

@@ -1,27 +1,5 @@
 #!/usr/bin/env bash
 # kimchi dotfiles
-# vim: filetype=sh
-
-ps0() {
-  unset PROMPT_COMMAND
-  PS1='$ '
-}
-
-ps1() {
-  source "$DOTFILES_DIR"/.prompt
-}
-
-# Get named var (usage: get "VAR_NAME")
-
-get() {
-  echo "${!1}"
-}
-
-# Add to path
-
-prepend-path() {
-  [ -d $1 ] && PATH="$1:$PATH"
-}
 
 # Calculator
 
@@ -32,11 +10,11 @@ calc() {
 # Weather
 
 meteo() {
-  local LOCALE=$(echo ${LANG:-en} | cut -c1-2)
+  LOCALE=$(echo "${LANG:-en}" | cut -c1-2)
   if [ $# -eq 0 ]; then
-    local LOCATION=$(curl -s ipinfo.io/loc)
+    LOCATION=$(curl -s ipinfo.io/loc)
   else
-    local LOCATION=$1
+    LOCATION=$1
   fi
   curl -s "$LOCALE.wttr.in/$LOCATION"
 }
