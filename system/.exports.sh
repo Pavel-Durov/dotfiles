@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # kimchi dotfiles
 
+export PATH="${HOME}/.dotfiles/bin:$PATH"
+
 # go
 export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
 

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+OUT="./flac2mp3"
+mkdir ${OUT}
+
+for f in ls ./*.flac; do
+  if [ -f "${f}" ]; then
+    ffmpeg -i "${f}" "${OUT}/${f/.flac/.mp3}"
+  fi
+done

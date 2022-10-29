@@ -1,3 +1,3 @@
 
 lint:
-	shellcheck ./system/.*.sh
+	shellcheck ./system/.*.sh ./bin/*

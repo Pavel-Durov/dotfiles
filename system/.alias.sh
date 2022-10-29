@@ -48,7 +48,7 @@ alias path='echo -e ${PATH//:/\\n}'
 
 
 # Miscellaneous
-alias hosts'sudo $EDITOR /etc/hosts'
+alias hosts='sudo $EDITOR /etc/hosts'
 alias quit="exit"
 alias week="date +%V"
 alias speedtest="speedtest-cli"
