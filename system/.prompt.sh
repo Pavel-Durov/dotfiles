@@ -89,8 +89,14 @@ bash_prompt_command() {
   if [[ $EXIT_CODE != 0 ]]; then
     P_EXIT+="${P_RED}✘ "
   fi
+  
+  # Python venv
+  VENV=""
+  if [ -n "${VIRTUAL_ENV}" ]; then
+    VENV="($(basename "${VIRTUAL_ENV}")) "
+  fi
 
-  PS1="${P_EXIT}${P_USER}${P_WHITE}@${P_HOST}${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW}\nλ ${P_RESET}"
+  PS1="${P_EXIT}${VENV}${P_USER}${P_WHITE}@${P_HOST}${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW}\nλ ${P_RESET}"
 }
 
 parse_git_branch() {
