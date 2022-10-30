@@ -19,6 +19,10 @@ meteo() {
   curl -s "$LOCALE.wttr.in/$LOCATION"
 }
 
+function npm-clean() {
+  npx npkill
+}
+
 function sso-login() {
   if [ -n "$1" ]
   then
