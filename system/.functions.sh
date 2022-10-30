@@ -19,7 +19,7 @@ meteo() {
   curl -s "$LOCALE.wttr.in/$LOCATION"
 }
 
-function ssologin() {
+function sso-login() {
   if [ -n "$1" ]
   then
     echo "Logging in with role $1"
@@ -34,12 +34,19 @@ function ssologin() {
   fi
 }
 
-# nate specific
-nateInit(){
-  aws codeartifact login --tool npm --domain nate-js --repository js --namespace @nate
-  aws ecr get-login-password --profile default | docker login --username AWS --password-stdin 847574585735.dkr.ecr.eu-west-1.amazonaws.com
+function docker-login(){
+  docker login --username iamkimchi
 }
 
-aws-get-current-role(){
+# nate specific
+function nate-init(){
+  # shellcheck source=/dev/null
+  source "${HOME}/.naterc"
+  aws codeartifact login --tool npm --domain "${NATE_NPM_DOMAIN}" --repository js --namespace "${NATE_NPM_NAMESPACE}"
+  aws ecr get-login-password --profile default | docker login --username AWS --password-stdin "${AWS_ACCOUNT_ID}.dkr.ecr.eu-west-1.amazonaws.com"
+}
+
+function aws-get-current-role(){
   aws sts get-caller-identity
 }
+
