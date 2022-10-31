@@ -54,3 +54,7 @@ function aws-get-current-role(){
   aws sts get-caller-identity
 }
 
+function osx-install-cli-utils(){
+  xcode-select --install
+}
+
