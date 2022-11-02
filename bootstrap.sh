@@ -15,23 +15,28 @@ function init-config(){
 }
 
 function mac-install(){
-  source ${PWD}/system/.functions
+  source ${PWD}/system/.functions.sh
   ${PWD}/bin/is-macos && ${PWD}/bin/is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
   ${PWD}/bin/is-macos && brew bundle --file=${PWD}/install/Caskfile || true
 }
 
-function init() {
-  init-config
-  # mac-install
+function install() {
+  if [[ "$OSTYPE" =~ ^darwin ]]; then
+    mac-install
+  else
+    echo "TODO: add linux install"
+  fi
 }
 
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
-	init;
+if [ "$1" == "--config" -o "$1" == "-c" ]; then
+	init-config
+elif [ "$1" == "--install" -o "$1" == "-i" ]; then
+  install
 else
 	read -p "This action will overwrite existing files in your ${HOME} directory. Are you sure? (y/n) " -n 1;
 	echo "";
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		init;
+		init-config;
 	fi;
 fi;
 unset init;
