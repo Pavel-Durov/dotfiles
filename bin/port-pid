@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+PORT=$1
+
+PID=$(lsof -n -i ":${PORT}" | grep LISTEN | awk '{print $2}' | head -n 1)
+
+if [ -z "${PID}" ]; then
+    echo "No process is listening on port ${PORT}"
+    exit 1
+fi
+
+echo "Found PID: ${PID}"
+echo "Should we kill it with fire? (y/N)"
+read -r REPLY
+
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    kill -9 "${PID}"
+    echo "PID ${PID} Killed!"
+fi;
