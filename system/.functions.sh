@@ -58,3 +58,6 @@ function osx-install-cli-utils(){
   xcode-select --install
 }
 
+tmx () {
+    tmux "$2" source-file "$HOME/.dotfiles/tmux/$1.conf";
+}
