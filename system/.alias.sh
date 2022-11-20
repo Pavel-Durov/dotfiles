@@ -20,7 +20,8 @@ alias ibrew="arch -x86_64 /opt/homebrew/bin/brew"
 
 # git
 alias git-show-config="git config --global --list --show-origin"
-alias git-log="git log --color --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'"
+
+alias git-log="git log --color --graph --date=format:'%Y-%m-%d-%H:%M' --pretty=format:'%Cred%h%Creset - %Cgreen%ad%C(yellow)%d%Creset %s %C(bold blue)%an %Creset'"
 
 # ip
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
