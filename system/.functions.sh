@@ -59,5 +59,9 @@ function osx-install-cli-utils(){
 }
 
 tmx () {
-    tmux "$2" source-file "$HOME/.dotfiles/tmux/$1.conf";
+  tmux "$2" source-file "$HOME/.dotfiles/tmux/$1.conf";
+}
+
+function ip-external(){
+  dig @resolver4.opendns.com myip.opendns.com +short
 }
