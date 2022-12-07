@@ -28,7 +28,7 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 
 # docker
-alias docker-prune='docker system prune'
+alias docker-prune='docker system prune -a'
 alias docker-rmi-all='docker rmi -f $(docker images -aq)'
 alias docker-rm-all='docker rm -vf $(docker ps -aq)'
 
