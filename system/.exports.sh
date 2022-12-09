@@ -18,8 +18,8 @@ export PATH="${PATH}:${HOME}/tools"
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="/usr/local/homebrew/opt/python@3.8/bin:$PATH"
 export PATH="/${HOME}/.rbenv/shims:${PATH}"
-JAVA_HOME="$(/usr/libexec/java_home)"
-export JAVA_HOME
+# JAVA_HOME="$(/usr/libexec/java_home)"
+# export JAVA_HOME
 export PATH="${PATH}/${JAVA_HOME}"
 export PATH="/opt/homebrew/bin:${PATH}"
 export RBENV_SHELL=bash
