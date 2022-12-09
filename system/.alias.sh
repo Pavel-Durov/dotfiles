@@ -12,12 +12,12 @@ alias terraform_v1.0.9="/usr/local/bin/terraform_v1.0.9"
 alias k="kubectl"
 # os stuff
 # alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
-alias g=/Users/kimchi/go/bin/g
-alias lsusb="ioreg -p IOUSB"
-alias ghci="stack ghci"
-alias hrun="stack exec runghc"
-alias ghc="stack ghc"
-alias ibrew="arch -x86_64 /opt/homebrew/bin/brew"
+# alias g=/Users/kimchi/go/bin/g
+# alias lsusb="ioreg -p IOUSB"
+# alias ghci="stack ghci"
+# alias hrun="stack exec runghc"
+# alias ghc="stack ghc"
+# alias ibrew="arch -x86_64 /opt/homebrew/bin/brew"
 
 # git
 alias git-show-config="git config --global --list --show-origin"

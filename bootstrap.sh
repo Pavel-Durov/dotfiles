@@ -25,6 +25,7 @@ function mac-install(){
 
 function arch-install(){
   source ${PWD}/system/.functions.sh
+  /usr/bin/pacman -sS - < ./install/pac_pkgs.txt
 }
 
 function install() {
