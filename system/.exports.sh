@@ -4,7 +4,11 @@
 export PATH="${HOME}/.dotfiles/bin:$PATH"
 
 # go
-export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
+export GOPATH="$HOME/go"; 
+export GOROOT="$HOME/.go"; 
+export PATH="$GOPATH/bin:$PATH"; 
+export PATH="$GOROOT/bin:$PATH"; 
+# g-install: do NOT edit, see https://github.com/stefanmaric/g
 
 # nvm
 NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
