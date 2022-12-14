@@ -11,5 +11,5 @@ echo ".files: ${TARGET}"
 shopt -s cdspell
 
 # Direnv
-source ${HOME}/.envrc
-eval "$(direnv hook bash)"
+# source ${HOME}/.envrc
+# eval "$(direnv hook bash)"

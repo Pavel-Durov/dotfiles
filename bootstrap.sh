@@ -10,8 +10,11 @@ function init-config(){
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE" \
-		-avh --no-perms . ${HOME}/.dotfiles;
-	source ${HOME}/.bash_profile;
+		-avh --no-perms . "${TARGET}";
+  cp "${TARGET}/config/.bash_profile" ${HOME}/.bash_profile
+  cp "${TARGET}/config/.vimrc" ${HOME}/.vimrc
+  cp "${TARGET}/config/.gitconfig" ${HOME}/.gitconfig
+ 	source ${HOME}/.bash_profile;
 }
 
 function mac-install(){
@@ -20,9 +23,16 @@ function mac-install(){
   ${PWD}/bin/is-macos && brew bundle --file=${PWD}/install/Caskfile || true
 }
 
+function arch-install(){
+  source ${PWD}/system/.functions.sh
+  /usr/bin/pacman -sS - < ./install/pac_pkgs.txt
+}
+
 function install() {
   if [[ "$OSTYPE" =~ ^darwin ]]; then
     mac-install
+  elif [ -f "/etc/arch-release" ]; then
+    arch-install
   else
     echo "TODO: add linux install"
   fi
@@ -36,7 +46,8 @@ else
 	read -p "This action will overwrite existing files in your ${HOME} directory. Are you sure? (y/n) " -n 1;
 	echo "";
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		init-config;
+	  init-config
+		install
 	fi;
 fi;
 unset init;
